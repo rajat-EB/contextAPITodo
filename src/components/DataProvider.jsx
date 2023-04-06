@@ -23,12 +23,16 @@ const DataProvider = ({ children }) => {
     setTasks(tasks.map((t) => (t.id === id ? { ...t, complete: status } : t)));
   };
 
+  const updateTask = (id, data) => {
+    setTasks(tasks.map((t) => (t.id === id ? { ...t, task: data } : t)));
+  };
+
   const deleteTask = (id) => {
     setTasks(tasks.filter((ts) => ts.id !== id));
   };
 
   return (
-    <TaskContext.Provider value={{ tasks, addtasks, isCompleted, deleteTask }}>
+    <TaskContext.Provider value={{ tasks, addtasks, isCompleted, deleteTask, updateTask }}>
       {children}
     </TaskContext.Provider>
   );
